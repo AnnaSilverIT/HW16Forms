@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/style.css" >
+  <title>Анкета пользователя</title>
+</head>
+<body>
+  <h1>Анкета пользователя</h1>
+<form name="myForm" class="form">
+  <div>
+  <label for="userName" class="label">Имя пользователя:  </label>
+  <input class="input" type="text" name="userName" id="userName" placeholder="Введите имя *" required maxlength="20" minlength="2">
+  <p class="error" id="nameError" ></p>
+</div>
+<div>
+  <label for="userEmail" class="label">Почта пользователя:  </label>
+  <input class="input" type="email" name="email" id="userEmail" placeholder="Введите почту *" required>
+  <p class="error" id="emailError" ></p>
+  </div>
+  <div>
+    <label for="userAge" class="label">Возраст пользователя:  </label>
+    <input class="input" type="number" name="age" id="userAge" placeholder="Введите возраст *" required max="160">
+  </div>
+  <div>
+    <label for="gender" class="label">Пол пользователя:  </label>
+    <input class="input input_gender" type="radio" name="gender" id="userGenderFemale" required > Женский </input>
+    <input class="input input_gender" type="radio" name="gender" id="userGenderMale" required > Мужской </input>
+  </div>
+  <div>
+    <label for="job" class="label">Профессия:  </label>
+    <select class="input" name="job" id="job" placeholder="Выберите профессию *" required >
+      <option>Врач</option>
+      <option>Программист</option>
+      <option>Учитель</option>
+      <option>Дизайнер</option>
+      <option>Инженер</option>
+      <option>Продавец</option>
+      <option>Другое</option>
+    </select>
+  </div>
+  <div>
+    <label for="userPassword" class="label">Пароль:  </label>
+    <input class="input" type="password" name="password" id="userPassword" placeholder="Введите пароль *" 
+    pattern="[0-9a-fA-F]{8,15}" required  minlength="8" >
+    <p class="error" id="passwordError" ></p>
+  </div>
+  <div>
+    <input class="input" type="checkbox" name="agreement" id="agreement" value="1"> Согласен на обработку данных * 
+  </div>
+  <div>
+    <button type="submit" class="button" name="button">Отправить форму</button>
+  </div>
+  <p class="error" id="Error" ></p>
+</form>
+<script src="./script.js"></script>
+</body>
+</html>
