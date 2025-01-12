@@ -23,10 +23,12 @@
     <label for="userAge" class="label">Возраст пользователя:  </label>
     <input class="input" type="number" name="age" id="userAge" placeholder="Введите возраст *" required max="160">
   </div>
-  <div>
-    <label for="gender" class="label">Пол пользователя:  </label>
-    <input class="input input_gender" type="radio" name="gender" id="gender" required > Женский </input>
-    <input class="input input_gender" type="radio"  id="genderMale" required > Мужской </input>
+  <div aria-required="">
+    <span>Пол пользователя:</span>
+    <label for="genderFemale" class="label">Женский </label>
+    <input class="input input_gender" type="radio" name="gender" id="genderFemale"  required> 
+    <label for="genderMale" class="label">Мужской </label>
+    <input class="input input_gender" type="radio" name="gender" id="genderMale" > 
   </div>
   <div>
     <label for="job" class="label">Профессия:  </label>
@@ -43,14 +45,14 @@
   <div>
     <label for="userPassword" class="label">Пароль(минимум 8 знаков):  </label>
     <input class="input" type="password" name="password" id="userPassword" placeholder="Введите пароль *" 
-     required pattern="^[a-zA-Z0-9]{8,20}$" minlength="8" >
+     required pattern="^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[0-9a-zA-Z]{8,20}$"   minlength="8" >
     <p class="error" id="passwordError" ></p>
   </div>
   <div>
     <input class="input" type="checkbox" name="agreement" id="agreement" value="1"> Согласен на обработку данных * 
   </div>
   <div>
-    <button type="submit" class="button"  name="button" autocomplete="current-password">Отправить форму</button>
+    <button type="submit" disabled class="button"  name="button" autocomplete="current-password">Отправить форму</button>
   </div>
   <p class="error" id="agreementError" ></p>
 </form>

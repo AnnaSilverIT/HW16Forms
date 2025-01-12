@@ -10,39 +10,60 @@ const emailError = document.getElementById('emailError');
 const passwordError = document.getElementById('passwordError');
 const termsError = document.getElementById('agreementError')
 
+userNameError.style.display = "none";
+emailError.style.display = "none";
+termsError.style.display = "none";
 
-form.addEventListener('submit', function(evt) {
-  evt.preventDefault();
-  let hasError = false;
+let emailInputError = true;
+let userInputError = true;
+let checkboxInputError = true;
 
-  userNameError.style.display = 'none';
-  emailError.style.display = 'none';
-  termsError.style.display = 'none';
+const checkError = () => {
+  console.log(emailInputError && userInputError && checkboxInputError);
 
+  if (!emailInputError && !userInputError && !checkboxInputError) {
+    button.removeAttribute("disabled");
+  }
+};
+
+userNameInput.addEventListener('change', function() {
   if (userNameInput.value === '') {
     userNameError.textContent = 'Введите имя пользователя.';
     userNameError.style.display = 'block';
-    hasError = true;
+    userInputError = true;
+  } else {
+    userInputError = false;
   }
-
-  if (emailInput.value === '') {
-    emailError.textContent = 'Введите корректный email.';
-    emailError.style.display = 'block';
-    hasError = true;
+  checkError();
+})
+emailInput.addEventListener("change", function () {
+  if (emailInput.value === "") {
+    emailError.textContent = "Введите корректный email.";
+    emailError.style.display = "block";
+    emailInputError = true;
+  } else {
+    emailInputError = false;
   }
+  checkError();
+});
 
+agreeCheckbox.addEventListener("change", function () {
   if (agreeCheckbox.checked === false) {
-    termsError.textContent = 'Необходимо согласие с условиями.';
-    termsError.style.display = 'block';
-    hasError = true;
+    termsError.textContent = "Необходимо согласие с условиями.";
+    termsError.style.display = "block";
+    checkboxInputError = true;
+  } else {
+    checkboxInputError = false;
   }
-
-  if (hasError === false) {
+  checkError();
+});
+form.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  if (emailInputError === false && userInputError ===false && checkboxInputError ===false) {
     alert('Форма успешно отправлена!');
-    button.removeAttribute('disabled')
-    form.reset()
-  }
- 
+      form.reset()
+    }
+  
 });
 
     
